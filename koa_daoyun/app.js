@@ -6,7 +6,7 @@ const app = new koa();
 const router = new Router();
 
 //路由
-router.get("/",async ctx=>{
+router.get("/",async ctx=>{ 
     ctx.body = {msg:'Hello Koa Interfaces'};
 });
 
