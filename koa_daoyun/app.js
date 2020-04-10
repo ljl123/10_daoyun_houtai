@@ -1,23 +1,30 @@
-const koa = require("koa");
-const Router = require("koa-router");
+const log_util = require("./src/infrastructure/log-util");
+const koa = require('koa');
+const port = require('./src/infrastructure/config').server_port
 
-//实例化koa对象  大写引入(上面的) 小写实例化(下面的)
+// 创建一个Koa对象表示web app本身:
 const app = new koa();
-const router = new Router();
 
-//路由
-router.get("/",async ctx=>{ 
-    ctx.body = {msg:'Hello Koa Interfaces'};
+app.use(async (ctx, next) => {
+    log_util.addlog()
+    await next()
+});
+
+// 1、log request URL:
+app.use(async (ctx, next) => {
+    console.log(`Process ${ctx.request.method} ${ctx.request.url}...`);
+    var
+        start = new Date().getTime(),
+        execTime;
+    await next();
+    execTime = new Date().getTime() - start;
+    ctx.response.set('X-Response-Time', `${execTime}ms`);
 });
 
 
 
-//配置路由
-app.use(router.routes()).use(router.allowedMethods());
 
-const port = process.env.PORT || 5000;
 
-app.listen(port,()=>{
-    console.log('server started on ' + port);
-});
 
+app.listen(port);
+log_util.info('app started at port ' + port + '...');
