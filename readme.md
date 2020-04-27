@@ -1,10 +1,9 @@
-
-##[2020-04-26] 
-完成日志的编写， 无论任何请求都需要先通过中间件1(打印所有日志)
+## [2020-04-26] 
+* 完成日志的编写， 无论任何请求都需要先通过中间件1(打印所有日志)
 一个在线编辑markdown文档的编辑器
 日志的具体配置方法：https://segmentfault.com/a/1190000017193811 
 
-##[2020-04-27] 
+## [2020-04-27] 
 * 跨域请求，浏览器不同的来源想要从服务端获得同样的资源 
 A web application executes a cross-origin HTTP request when it requests a resource 
 that has a different origin (domain, protocol, or port) from its own.
@@ -18,7 +17,7 @@ that has a different origin (domain, protocol, or port) from its own.
 
 
 
-##后端大致框架：
+## 后端大致框架：
     所有的请求
                通过中间件1 记录在log日志上
                通过中间件2 跨域传输，不同url 进行跨域的传输 请求到服务器相同的资源
