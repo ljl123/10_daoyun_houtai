@@ -307,7 +307,6 @@ var do_register = async (user, email_code, is_manage_create = false) => {
     if (user.type != '1' && !is_manage_create && !verifyEmailCode(user.email, email_code)) { e.message = '邮箱验证码不正确'; throw e; }
     let now = Date.now()
     let form = {
-        uid: user.type, //先加上这个字段ywx
         email: user.email,
         phone: user.phone,
         password: user.password,
