@@ -13,7 +13,11 @@ that has a different origin (domain, protocol, or port) from its own.
 
 * 注释了token-interceptor 里面的getUserTypeFromToken 和 getUserPower
 
-
+## [2020-05-03] 
+### 基本都完成了(邮箱验证确保没有问题)，有以下若干问题
+* 数据库字段用谁的 ？ 不然调试的时候会出现和代码不兼容问题
+* face-match功能要删掉
+* 添加新功能
 
 
 
@@ -22,14 +26,16 @@ that has a different origin (domain, protocol, or port) from its own.
                通过中间件1 记录在log日志上
                通过中间件2 跨域传输，不同url 进行跨域的传输 请求到服务器相同的资源
                通过中间件3 请求送进服务器时打印method在console上，请求完成后执行时间打印在console上
-               通过中间件4 对post参数进行处理 这里涉及到了static资源上，没有static代码要研究一下
-               通过中间件5 api接口的处理
-               通过中间件6 token令牌，里面注释掉了两个类 后面人记得改下
+               通过中间件4 静态数据
+               通过中间件5 对post参数进行处理 这里涉及到了static资源上，没有static代码要研究一下
+               通过中间件6 api接口的处理
+               通过中间件7 token令牌，里面注释掉了两个类 后面人记得改下
                
-               control层 ...没看了
+               control层: 映射各个路由的post get delete...操作到controls的各个文件
 
-               通过中间件6 token令牌的一些异常或错误处理
-               通过中间件5 api接口返回给前端信息
+               通过中间件7 token令牌的一些异常或错误处理
+               通过中间件6 api接口返回给前端信息
+               通过中间件5 无操作
                通过中间件4 无操作
                通过中间件3 无操作
                通过中间件2 无操作
@@ -39,14 +45,13 @@ that has a different origin (domain, protocol, or port) from its own.
 
 
 
-##文件夹设置：
+## 文件夹设置：
 
     ── /          # 后端代码目录
        ├── app.js # 后端服务入口文件
-       ├── controllers/    # 操作层目录     没创建
-       ├── models/ # 数据模型model层目录    没创建
-       ├── routers/ # 路由目录              没创建
-       ├── services/   # 业务层目录         没创建
+       ├── controllers/    # 操作层目录    
+       ├── models/ # 数据模型model层目录   
+       ├── services/   # 业务层目录         
        ├── utils/  # 工具类目录
        ├── config/  #配置文件目录
        ├── print_log/  #日志输出目录

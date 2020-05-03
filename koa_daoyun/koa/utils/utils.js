@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const LogUtil = require('../log/log-util')
-// const User = require('./models/UserModel')
-// const Manager = require('./models/ManagerModel')
+const User = require('../models/UserModel')
+const Manager = require('../models/ManagerModel')
 
 const secret = "jwt verify";
 let format_time = new Date().toLocaleString()
@@ -57,23 +57,23 @@ module.exports = {
             timestamp: format_time
         }
     },
-    // 'getUserTypeFromToken': async (token) =>
-    //     await User.findOne({
-    //         attributes: ['type'],
-    //         where: { uid: getUidFromToken(token) },
-    //         raw: true
-    //     }).then(res => res ? Number(res.type) : null).catch(err => { LogUtil.error(err); return null; }),
-    // 'getUserPower': async (token) => {
-    //     let uid = getUidFromToken(token)
-    //     return Manager.findOne({
-    //         attributes: ['mUser', 'mCourse', 'mCheck', 'mStudent', 'mDict','mManage'],
-    //         where: {
-    //             uid: uid
-    //         },
-    //         raw: true
-    //     }).then(res => res ? res : LogUtil.error('数据库出错或不存在该管理员用户')).catch(err => {
-    //         LogUtil.error(err)
-    //         return null
-    //     })
-    // }
+    'getUserTypeFromToken': async (token) =>
+        await User.findOne({
+            attributes: ['type'],
+            where: { uid: getUidFromToken(token) },
+            raw: true
+        }).then(res => res ? Number(res.type) : null).catch(err => { LogUtil.error(err); return null; }),
+    'getUserPower': async (token) => {
+        let uid = getUidFromToken(token)
+        return Manager.findOne({
+            attributes: ['mUser', 'mCourse', 'mCheck', 'mStudent', 'mDict','mManage'],
+            where: {
+                uid: uid
+            },
+            raw: true
+        }).then(res => res ? res : LogUtil.error('数据库出错或不存在该管理员用户')).catch(err => {
+            LogUtil.error(err)
+            return null
+        })
+    }
 }

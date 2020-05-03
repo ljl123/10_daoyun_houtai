@@ -3,7 +3,7 @@ var log4js_config = require("./logConf.json");
 const config = require('../config/config')
 log4js.configure(log4js_config);
 // log_file详细在 print_logs/log_file 文件下
-var LogFile = log4js.getLogger('log_file');
+var LogFile = log4js.getLogger('print_logs/log_file');
 
 module.exports = {
     trace: (info) => {
@@ -23,6 +23,6 @@ module.exports = {
         return null
     },
     addlog: async () => {
-        log4js.connectLogger(log4js.getLogger('log_file'), { level: config.environment[config.ENV] })
+        log4js.connectLogger(log4js.getLogger('print_logs/log_file'), { level: config.environment[config.ENV] })
     }
 }
