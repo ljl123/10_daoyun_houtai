@@ -424,7 +424,7 @@ var sendEmailCode = async (email) => {
     let sendOption = {
         from: '<497409212@qq.com>', // sender address
         to: email, // list of receivers
-        subject: "\"第10组到云\"APP验证码", // Subject line
+        subject: "\"第10组到云\"验证码", // Subject line
         text: "验证码为：" + code + ",十分钟内有效。" // plain text body
     }
     let result = await MailSender.sendMail(sendOption)
