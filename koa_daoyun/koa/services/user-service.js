@@ -310,7 +310,7 @@ var do_register = async (user, email_code, is_manage_create = false) => {
         email: user.email,
         phone: user.phone,
         password: user.password,
-        nick_name: '用户_' + user.email.substring(4),
+        nick_name: '到云_' + user.email.substring(4),
         name: user.name,
         type: user.type,
         reg_time: now,
