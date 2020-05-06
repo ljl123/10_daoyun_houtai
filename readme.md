@@ -14,12 +14,19 @@ that has a different origin (domain, protocol, or port) from its own.
 * 注释了token-interceptor 里面的getUserTypeFromToken 和 getUserPower
 
 ## [2020-05-03] 
-### 基本都完成了(邮箱验证确保没有问题)，有以下若干问题
+### 基本都完成了(邮箱验证确有问题)，有以下若干问题
 * 数据库字段用谁的 ？ 不然调试的时候会出现和代码不兼容问题
 * face-match功能要删掉
 * 添加新功能
 
-
+## [2020-05-06] 
+### 注意这两文件新建要放在MySQL/ 文件夹下，GitHub文件夹里直接source会报错。如果有出现问题注意一下
+### build_checkserver.sql 包含添加数据 checkserver.sql 不包含添加数据 
+* 添加了systemEnv 表
+* 数据库中文乱码问题
+* 添加了models/SystemModel.js
+* 数据库没有添加经验字段
+* 修改查询没写
 
 ## 后端大致框架：
     所有的请求

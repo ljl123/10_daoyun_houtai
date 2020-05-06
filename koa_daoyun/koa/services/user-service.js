@@ -17,7 +17,7 @@ const MailSender = nodemailer.createTransport({
     secure: false, // upgrade later with STARTTLS
     auth: {
         user: "497409212@qq.com",
-        pass: "ubgfpdcallvzbgce"
+        pass: "qchztbuhiszobgcd"
     }
 });
 
