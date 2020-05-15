@@ -35,8 +35,18 @@ that has a different origin (domain, protocol, or port) from its own.
   let user_type = 1
 ```
 * 添加了controllers/system.js
-
-
+### 修改了发送邮箱
+```javascript
+const MailSender = nodemailer.createTransport({
+    host: "smtp.qq.com",
+    port: 587,
+    secure: false, // upgrade later with STARTTLS
+    auth: {
+        user: "376806225@qq.com",
+        pass: "wickcgsndsgkcabd"
+    }
+});
+```
 ## 后端大致框架：
     所有的请求
                通过中间件1 记录在log日志上
