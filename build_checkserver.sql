@@ -39,10 +39,10 @@ CREATE TABLE `checks`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 55 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Table structure for systemEnv
+-- Table structure for systemenvs
 -- ----------------------------
-DROP TABLE IF EXISTS `systemEnv`;
-CREATE TABLE `systemEnv`  (
+DROP TABLE IF EXISTS `systemenvs`;
+CREATE TABLE `systemenvs`  (
   `id` int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `uid` int(8) NOT NULL COMMENT 'uid',
   `experience` int(8) NOT NULL COMMENT '签到一次几点经验值',
@@ -52,9 +52,9 @@ CREATE TABLE `systemEnv`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- pre Records of systemEnv
+-- pre Records of systemenvs
 -- ----------------------------
-INSERT INTO `systemEnv` VALUES (1, 1, 3, 1000);
+INSERT INTO `systemenvs` VALUES (1, 1, 3, 1000);
 
 -- ----------------------------
 -- Table structure for courses

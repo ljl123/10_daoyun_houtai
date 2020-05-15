@@ -28,6 +28,15 @@ that has a different origin (domain, protocol, or port) from its own.
 * 数据库没有添加经验字段
 * 修改查询没写
 
+## [2020-05-15]
+### 系统参数查看，修改经验值完成，调试的时候因为权限注意看system.js文件夹下
+```javascript
+  //let user_type = await getUserPermissionFromToken(token)
+  let user_type = 1
+```
+* 添加了controllers/system.js
+
+
 ## 后端大致框架：
     所有的请求
                通过中间件1 记录在log日志上
