@@ -16,8 +16,8 @@ const MailSender = nodemailer.createTransport({
     port: 587,
     secure: false, // upgrade later with STARTTLS
     auth: {
-        user: "497409212@qq.com",
-        pass: "qchztbuhiszobgcd"
+        user: "376806225@qq.com",
+        pass: "wickcgsndsgkcabd"
     }
 });
 
@@ -422,7 +422,7 @@ var sendEmailCode = async (email) => {
     if (!reg.test(email)) { e.message = '邮箱地址不正确'; throw e }
     let code = generateRandomNumber(6);
     let sendOption = {
-        from: '<497409212@qq.com>', // sender address
+        from: '<376806225@qq.com>', // sender address
         to: email, // list of receivers
         subject: "\"第10组到云\"验证码", // Subject line
         text: "验证码为：" + code + ",十分钟内有效。" // plain text body
