@@ -1,7 +1,7 @@
 const remote = true
 const log4js = require("log4js");
-const SERVER_PORT_LOCAL = 16666
-const SERVER_PORT_REMOTE = 16666
+const SERVER_PORT_LOCAL = 33333
+const SERVER_PORT_REMOTE = 33333
 
 var config = {
     dialect: 'mysql',
