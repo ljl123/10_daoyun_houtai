@@ -9,8 +9,15 @@ module.exports = {
     'POST /api/user/register': async (ctx, next) => {
         let user = ctx.request.body.fields
         let email_code = user.email_code
+        let is_manage_create = user.is_manage_create
+        if(is_manage_create==='1'){
+            is_manage_create=true
+            user.password='101010'
+        }else{
+            is_manage_create=false
+        }
         delete user.email_code
-        ctx.rest(await UserService.register(user,email_code))
+        ctx.rest(await UserService.register(user,email_code,is_manage_create))
     },
     'PUT /api/user/password': async (ctx, next) => {
         let email = ctx.request.body.fields.email || null
