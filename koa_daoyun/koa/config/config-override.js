@@ -5,9 +5,9 @@ const SERVER_PORT_REMOTE = 33333
 
 var config = {
     dialect: 'mysql',
-    database: 'checkserver',
+    database: 'daoyun',
     username: 'root',
-    password: '123',
+    password: '123456',
     host: 'localhost',
     port: 3306,
     server_port: remote ? SERVER_PORT_REMOTE : SERVER_PORT_LOCAL,

@@ -28,8 +28,6 @@ module.exports = {
         let time = ctx.request.body.fields.time || null
         let location = ctx.request.body.fields.location || null
         let course_id = ctx.request.body.fields.course_id || null
-        let files = ctx.request.body.files || null
-        let file_path, file_name
         let isCheck = await isChecked(uid, course_id)
         if (isCheck == undefined) {
             returnModel.result_code = '0'
@@ -44,63 +42,26 @@ module.exports = {
             ctx.rest(returnModel)
             return;
         }
-        if (files) {
-            for (let f in files) {
-                file_path = files[f].path
-                file_name = files[f].name
-            }
-        } else {
-            returnModel.result_code = '0'
-            returnModel.result_desc = "人脸信息上传失败"
-            ctx.rest(returnModel)
-            return;
-        }
-        let check_flag = await canCheck(course_id)
-        if (!check_flag) {
-            deleteFile(file_path)
-            returnModel.data = check_flag
-            if (check_flag === null) {
-                returnModel.result_code = '0'
-                returnModel.result_desc = '签到失败'
+        let check_flag = await canCheck(course_id)//检查能不能进行签到 true：能   false 超出时间   null：不能签到
+        if (check_flag == true) {
+            if ((await check(uid, time, location, course_id))) {//进行签到
+                returnModel.data = true
+                returnModel.result_code = '200'
+                returnModel.result_desc = "签到成功"
             } else {
-                returnModel.result_code = '206'
-                returnModel.result_desc = '超出签到时间'
+                // deleteFile(url.replace(HOST_IP, __dirname.replace('controllers', '')))
+                returnModel.data = false
+                returnModel.result_code = '200'
+                returnModel.result_desc = "签到失败"
             }
-            ctx.rest(returnModel)
-            return;
-        }
-        let finalPath = file_path + '.' + file_name.split('.')[1];
-        finalPath = finalPath.replace('upload', 'facecheck')
-        let tag = true;
-        try {
-            fs.renameSync(file_path, finalPath)
-        } catch (err) {
-            LogUtil.error(err);
-            tag = false
-        }
-        if (tag) {
-            let url = (HOST_IP + '/static' + finalPath.split('static')[1]).replace(/\\/g, '/');
-            if ((await verifyFace(uid, url.replace(HOST_IP, __dirname.replace('controllers', ''))))) {
-                if ((await check(uid, time, location, course_id))) {
-                    returnModel.data = true
-                    returnModel.result_code = '200'
-                    returnModel.result_desc = "签到成功"
-                } else {
-                    deleteFile(url.replace(HOST_IP, __dirname.replace('controllers', '')))
-                    returnModel.data = false
-                    returnModel.result_code = '200'
-                    returnModel.result_desc = "签到失败"
-                }
-            } else {
-                deleteFile(url.replace(HOST_IP, __dirname.replace('controllers', '')))
-                returnModel.result_code = '206'
-                returnModel.result_desc = "人脸验证错误"
-            }
-        } else {
-            deleteFile(file_path)
+        }else if(check_flag === null){
             returnModel.result_code = '0'
-            returnModel.result_desc = "人脸信息上传失败"
+            returnModel.result_desc = '签到失败'
+        }else{// 等于false
+            returnModel.result_code = '206'
+            returnModel.result_desc = '超出签到时间'
         }
+
         ctx.rest(returnModel)
     },
     'POST /api/check/startCheck': async (ctx, next) => {
@@ -148,33 +109,6 @@ module.exports = {
         ctx.rest(returnModel)
     },
     check: check
-}
-
-/**
- * 验证人脸信息
- * @param {*} uid 
- * @param {*} face_url 
- */
-var verifyFace = async (uid, face_url) => {
-    if (!config.need_face) return true
-    let face_url_origin = await User.findOne({
-        attributes: ['face_info'],
-        where: { uid: uid },
-        raw: true
-    }).then(res => res ? res.face_info : false)
-        .catch(err => { LogUtil.error(err); return null })
-    if (face_url_origin) {
-        return await FaceMatch(face_url_origin.replace(HOST_IP, __dirname.replace('controllers', '')), face_url)
-            .then(confidence => {
-                console.log("confidence" + confidence)
-                if (confidence > 60) return true
-                else return false
-            }).catch(err => {
-                LogUtil.error(err)
-                return false
-            })
-    }
-    return false
 }
 
 /**
