@@ -12,7 +12,7 @@ let now = Date.now()
  * @param {*} uid uid
  * @param {*} time 持续时间 '1d 1h 1s'
  */
-let getToken = async (uid, time = '1d') => {
+let getToken = async (uid, time = '2h') => {
     let token = jwt.sign({
         msg: uid
     }, secret, {
