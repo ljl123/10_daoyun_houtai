@@ -28,8 +28,11 @@ var getUserPermissionFromToken = async (token) =>
 module.exports = {
     'POST /api/dict/create_type': async (ctx, next) => {
         let returnModel = getReturnModel();
+        let typename = {}
         let token = ctx.request.body.fields.token || null
-        let typename = ctx.request.body.fields.typename || null
+        typename.typenameChinese = ctx.request.body.fields.typenameChinese || null
+        typename.typenameEnglish = ctx.request.body.fields.typenameEnglish || null
+        typename.description = ctx.request.body.fields.description || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -51,9 +54,8 @@ module.exports = {
         let info = {}
         let token = ctx.request.body.fields.token || null
         info.typeid = ctx.request.body.fields.typeid || null
-        info.type_level = ctx.request.body.fields.type_level || null
-        info.type_belong = ctx.request.body.fields.type_belong || null
         info.info = ctx.request.body.fields.info || null
+        info.typestate = ctx.request.body.fields.typestate || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -115,8 +117,8 @@ module.exports = {
     },
     'GET /api/dict/infos4name': async (ctx, next) => {
         let returnModel = getReturnModel();
-        let typename = ctx.request.query.typename || null
-        let list = await getInfos4name(typename)
+        let typenameChinese = ctx.request.query.typenameChinese || null //按照typenameChinese 去找typeid  然后根据typeid去找从表内容
+        let list = await getInfos4name(typenameChinese)
         if (list) {
             returnModel.data = list
             returnModel.result_code = '200'
@@ -150,7 +152,7 @@ module.exports = {
     'DELETE /api/dict/info': async (ctx, next) => {
         let returnModel = getReturnModel();
         let token = ctx.request.body.fields.token || null
-        let infoid = ctx.request.body.fields.infoid || null
+        let infoid = ctx.request.body.fields.infoid || null   //根据id删除从表的小项 infoid就是从表的id
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -167,10 +169,12 @@ module.exports = {
         }
         ctx.rest(returnModel)
     },
-    'PUT /api/dict/type': async (ctx, next) => {
+    'PUT /api/dict/type': async (ctx, next) => {//根据typeid修改内容
         let returnModel = getReturnModel();
+        let typename = {}
         let token = ctx.request.body.fields.token || null
-        let typename = ctx.request.body.fields.typename || null
+        typename.typenameChinese = ctx.request.body.fields.typenameChinese || null
+        typename.typenameEnglish = ctx.request.body.fields.typenameEnglish || null
         let typeid = ctx.request.body.fields.typeid || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
@@ -192,10 +196,10 @@ module.exports = {
         let returnModel = getReturnModel();
         let info = {}
         let token = ctx.request.body.fields.token || null
-        info.type_level = ctx.request.body.fields.type_level || null
         let id = ctx.request.body.fields.infoid || null
-        info.type_belong = ctx.request.body.fields.type_belong || null
+        info.typeid = ctx.request.body.fields.typeid || null
         info.info = ctx.request.body.fields.info || null
+        info.typestate = ctx.request.body.fields.typestate || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -219,7 +223,7 @@ module.exports = {
  * @param {*} typename 类型名称
  */
 var createType = async (typename) => {
-    return await DictType.create({ typename: typename })
+    return await DictType.create(typename)
         .then(res => res ? true : false)
         .catch(err => { LogUtil.error(err); return false; })
 }
@@ -278,7 +282,7 @@ var deleteInfo = async (infoid) =>
  * @param {*} typename 
  */
 var modifyType = async (typeid, typename) =>
-    await DictType.update({ typename: typename },
+    await DictType.update(typename,
         { where: { typeid: typeid } })
         .then(res => res == 1 ? true : false)
         .catch(err => { LogUtil.error(err); return false; })
@@ -295,10 +299,10 @@ var modifyInfo = async (id, info) =>
 
 /**
  * 通过typename获取字典内容
- * @param {*} typename 
+ * @param {*} typenameChinese 
  */
-var getInfos4name = async (typename) => {
-    let typeid = await DictType.findOne({ where: { typename: typename }, raw: true })
+var getInfos4name = async (typenameChinese) => {
+    let typeid = await DictType.findOne({ where: { typenameChinese: typenameChinese }, raw: true })
         .then(res => res ? res.typeid : null)
         .catch(err => { LogUtil.error(err); return null; })
     if (!typeid) return []

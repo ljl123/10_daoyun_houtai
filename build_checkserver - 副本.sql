@@ -85,8 +85,9 @@ DROP TABLE IF EXISTS `dictinfo`;
 CREATE TABLE `dictinfo`  (
   `id` int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `typeid` int(8) NOT NULL COMMENT '类型id',
-  `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '文本描述',
-  `typestate` int(1) NOT NULL COMMENT '默认',
+  `type_level` int(3) NOT NULL COMMENT '在类别中的级别',
+  `type_belong` int(3) NOT NULL COMMENT '在大类中 又是谁的子类 1为最高level',
+  `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '字典内容',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `typeid`(`typeid`) USING BTREE,
   CONSTRAINT `typeid` FOREIGN KEY (`typeid`) REFERENCES `dicttype` (`typeid`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -98,11 +99,9 @@ CREATE TABLE `dictinfo`  (
 DROP TABLE IF EXISTS `dicttype`;
 CREATE TABLE `dicttype`  (
   `typeid` int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `typenameChinese` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '中文',
-  `typenameEnglish` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '英文',
-  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '描述',
+  `typename` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '类型名称',
   PRIMARY KEY (`typeid`) USING BTREE,
-  UNIQUE INDEX `typenameChinese`(`typenameChinese`) USING BTREE
+  UNIQUE INDEX `typename`(`typename`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------

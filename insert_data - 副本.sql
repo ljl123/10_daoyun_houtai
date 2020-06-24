@@ -111,17 +111,17 @@ INSERT INTO `courses` VALUES (17, '大数据分析', '5rvVN1', '东3-108', '', '
 -- ----------------------------
 -- Records of dictinfo
 -- ----------------------------
-INSERT INTO `dictinfo` VALUES (1, 1, '男', true);
-INSERT INTO `dictinfo` VALUES (2, 1, '女', false);
-INSERT INTO `dictinfo` VALUES (3, 2, '管理员', true);
-INSERT INTO `dictinfo` VALUES (4, 2, '学生', false);
-INSERT INTO `dictinfo` VALUES (5, 2, '老师', false);
+INSERT INTO `dictinfo` VALUES (1, 1, 1, 1, '复旦大学');
+INSERT INTO `dictinfo` VALUES (2, 1, 1, 1, '福州大学');
+INSERT INTO `dictinfo` VALUES (3, 1, 1, 1, '浙江大学');
+INSERT INTO `dictinfo` VALUES (4, 1, 2, 2, '数计学院');
+INSERT INTO `dictinfo` VALUES (5, 1, 3, 4, '计算机专业');
 
 -- ----------------------------
 -- Records of dicttype
 -- ----------------------------
-INSERT INTO `dicttype` VALUES (1, '性别', 'gender', '用户性别');
-INSERT INTO `dicttype` VALUES (2, '身份', 'identity', '登入身份');
+INSERT INTO `dicttype` VALUES (1, '学校信息');
+INSERT INTO `dicttype` VALUES (2, '学生信息');
 
 -- ----------------------------
 -- Records of manager
