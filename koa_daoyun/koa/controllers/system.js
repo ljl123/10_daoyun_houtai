@@ -25,7 +25,7 @@ module.exports = {
     'POST /api/system/infos': async (ctx, next) => {
         let returnModel = getReturnModel();
         let token = ctx.request.body.fields.token || null
-        let typeid = ctx.request.body.fields.typeid || null
+        let id = ctx.request.body.fields.infoid || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -33,7 +33,7 @@ module.exports = {
             ctx.rest(returnModel)
             return;
         }
-        let list = await getInfos(typeid)
+        let list = await getInfos(id)
         if (list) {
             returnModel.data = list
             returnModel.result_code = '200'
@@ -48,10 +48,9 @@ module.exports = {
         let returnModel = getReturnModel();
         let info = {}
         let token = ctx.request.body.fields.token || null
-        info.type_level = ctx.request.body.fields.type_level || null
         let id = ctx.request.body.fields.infoid || null
-        info.type_belong = ctx.request.body.fields.type_belong || null
-        info.info = ctx.request.body.fields.info || null
+        info.distance = ctx.request.body.fields.distance || null
+        info.experience = ctx.request.body.fields.experience || null
         let user_type = await getUserPermissionFromToken(token)
         if (Number(user_type) != 1) {
             returnModel.result_code = '206'
@@ -72,11 +71,11 @@ module.exports = {
 
 
 /**
- * @param {*} typeid 
+ * @param {*} id 
  */
-var getInfos = async (typeid) =>
+var getInfos = async (id) =>
     await systemInfo.findAll({
-        where: { id: typeid },
+        where: { id: id },
         raw: true
     })
         .then(res => res ? res : null)
@@ -89,6 +88,6 @@ var getInfos = async (typeid) =>
  */
 var modifyInfo = async (id, info) =>
     // await systemInfo.update(info, { where: { uid: id } })
-    await systemInfo.update( info.info, { where: { uid: id } })
+    await systemInfo.update( info, { where: { uid: id } })
         .then(res => res == 1 ? true : false)
         .catch(err => { LogUtil.error(err); return false; })
