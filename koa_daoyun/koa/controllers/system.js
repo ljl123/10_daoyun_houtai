@@ -27,12 +27,12 @@ module.exports = {
         let token = ctx.request.body.fields.token || null
         let id = ctx.request.body.fields.infoid || null
         let user_type = await getUserPermissionFromToken(token)
-        if (Number(user_type) != 1) {
-            returnModel.result_code = '206'
-            returnModel.result_desc = '没有权限操作'
-            ctx.rest(returnModel)
-            return;
-        }
+        // if (Number(user_type) != 1) {
+        //     returnModel.result_code = '206'
+        //     returnModel.result_desc = '没有权限操作'
+        //     ctx.rest(returnModel)
+        //     return;
+        // }
         let list = await getInfos(id)
         if (list) {
             returnModel.data = list
