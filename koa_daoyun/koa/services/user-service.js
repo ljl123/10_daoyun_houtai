@@ -259,7 +259,7 @@ module.exports = {
  */
 var getUser = async (name) => await User.findOne({
     where: {
-        $or: { email: name, phone: name, uid: name }
+        $or: { email: name, phone: name, name: name,uid: name }
     },
     raw: true
 }).then(res => {
