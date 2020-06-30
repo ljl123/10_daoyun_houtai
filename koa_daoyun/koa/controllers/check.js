@@ -10,6 +10,7 @@ const User = require('../models/UserModel')
 const Course = require('../models/CourseModel')
 const Students = require('../models/StudentsModel')
 const SigninList = require('../models/Sign-inListModel')
+const systemenv = require('../models/SystemModel')
 
 const config = require('../config/config-override')
 const HOST_IP = config.remote ? config.imghost : config.imghost_default
@@ -51,7 +52,7 @@ module.exports = {
             } else {
                 returnModel.data = false
                 returnModel.result_code = '200'
-                returnModel.result_desc = "签到失败"
+                returnModel.result_desc = "超出签到范围"
             }
         }else if(check_flag === null){
             returnModel.result_code = '0'
