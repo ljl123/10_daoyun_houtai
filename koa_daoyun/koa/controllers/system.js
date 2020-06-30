@@ -81,7 +81,6 @@ var getInfos = async (id) =>
  * @param {*} info 具体信息 除id和typeid外
  */
 var modifyInfo = async (id, info) =>
-    // await systemInfo.update(info, { where: { uid: id } })
     await systemInfo.update( info, { where: { uid: id } })
         .then(res => res == 1 ? true : false)
         .catch(err => { LogUtil.error(err); return false; })

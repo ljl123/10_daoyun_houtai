@@ -137,17 +137,19 @@ var check = async (uid, time, location, course_id) => {
     check_location = location.replace(' ', '').split(',')
     distance = getDistance(course_location[0], course_location[1], check_location[0], check_location[1])
     // 获取系统距离
-    let system_distance = await systemenv.findOne({
+    let system_info = await systemenv.findOne({
         attributes: ['experience', 'distance'],
         where: { uid: 1 },
         raw: true
     }).then(res => {
         if (res) {
-            experience = res.experience
-            distance = res.distance
+            system_experience = res.experience
+            system_distance = res.distance
             return true
         } else return null
     }).catch(err => { LogUtil.error(err); return null; })
+    if (!system_info)//没有获取成功
+        return false
     // 如果距离不在系统范围内
     if(distance < system_distance) return false;
     return await SigninList.create({
