@@ -259,7 +259,7 @@ module.exports = {
  */
 var getUser = async (name) => await User.findOne({
     where: {
-        $or: { email: name, phone: name, uid: name }
+        $or: { email: name, phone: name, name: name,uid: name }
     },
     raw: true
 }).then(res => {
@@ -271,13 +271,13 @@ var getUser = async (name) => await User.findOne({
 
 /**
  * 验证密码
- * @param {*} name 用户名 邮箱或者电话
+ * @param {*} name 用户名或者邮箱或者电话
  * @param {*} p 密码
  */
 var checkPassword = async (name, p) =>
     await User.findOne({
         where: {
-            $or: { email: name, phone: name , name: name},
+            $or: { email: name, phone: name ,name:name},
             password: p
         },
         raw: true
