@@ -151,7 +151,7 @@ var check = async (uid, time, location, course_id) => {
     if (!system_info)//没有获取成功
         return false
     // 如果距离不在系统范围内
-    if(distance < system_distance) return false;
+    if(distance > system_distance) return false;
     return await SigninList.create({
         uid: uid,
         course_id: course_id,
