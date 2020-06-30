@@ -277,7 +277,7 @@ var getUser = async (name) => await User.findOne({
 var checkPassword = async (name, p) =>
     await User.findOne({
         where: {
-            $or: { email: name, phone: name },
+            $or: { email: name, phone: name , name: name},
             password: p
         },
         raw: true

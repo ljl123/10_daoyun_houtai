@@ -27,12 +27,6 @@ module.exports = {
         let token = ctx.request.body.fields.token || null
         let id = ctx.request.body.fields.infoid || null
         let user_type = await getUserPermissionFromToken(token)
-        if (Number(user_type) != 1) {
-            returnModel.result_code = '206'
-            returnModel.result_desc = '没有权限操作'
-            ctx.rest(returnModel)
-            return;
-        }
         let list = await getInfos(id)
         if (list) {
             returnModel.data = list
@@ -87,7 +81,6 @@ var getInfos = async (id) =>
  * @param {*} info 具体信息 除id和typeid外
  */
 var modifyInfo = async (id, info) =>
-    // await systemInfo.update(info, { where: { uid: id } })
     await systemInfo.update( info, { where: { uid: id } })
         .then(res => res == 1 ? true : false)
         .catch(err => { LogUtil.error(err); return false; })

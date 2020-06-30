@@ -49,7 +49,6 @@ module.exports = {
                 returnModel.result_code = '200'
                 returnModel.result_desc = "签到成功"
             } else {
-                // deleteFile(url.replace(HOST_IP, __dirname.replace('controllers', '')))
                 returnModel.data = false
                 returnModel.result_code = '200'
                 returnModel.result_desc = "签到失败"
@@ -137,6 +136,20 @@ var check = async (uid, time, location, course_id) => {
     course_location = course_location.replace(' ', '').split(',')
     check_location = location.replace(' ', '').split(',')
     distance = getDistance(course_location[0], course_location[1], check_location[0], check_location[1])
+    // 获取系统距离
+    let system_distance = await systemenv.findOne({
+        attributes: ['experience', 'distance'],
+        where: { uid: 1 },
+        raw: true
+    }).then(res => {
+        if (res) {
+            experience = res.experience
+            distance = res.distance
+            return true
+        } else return null
+    }).catch(err => { LogUtil.error(err); return null; })
+    // 如果距离不在系统范围内
+    if(distance < system_distance) return false;
     return await SigninList.create({
         uid: uid,
         course_id: course_id,
