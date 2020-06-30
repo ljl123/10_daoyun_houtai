@@ -1,8 +1,4 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const fs = require('fs');
 const db = require('../db')
-const FaceMatch = require('../face-match')
 const Util = require('../utils/utils')
 const LogUtil = require('../log/log-util')
 
@@ -13,10 +9,9 @@ const SigninList = require('../models/Sign-inListModel')
 const systemenv = require('../models/SystemModel')
 
 const config = require('../config/config-override')
-const HOST_IP = config.remote ? config.imghost : config.imghost_default
 
 /**
- * 获取返回模板
+ * 获取返回模板getReturnModel
  */
 var getReturnModel = Util.getReturnModel
 
@@ -168,7 +163,7 @@ var check = async (uid, time, location, course_id) => {
  * 开始签到
  * @param {*} course_id 
  * @param {*} start_time ms
- * @param {*} duration 持续时间(毫秒)
+ * @param {*} duration 持续时间单位是毫秒
  */
 var startCheck = async (course_id, start_time, duration) => {
     let end_time = Number(start_time) + Number(duration.replace(' ', ''))
@@ -176,7 +171,6 @@ var startCheck = async (course_id, start_time, duration) => {
         start_time: start_time,
         end_time: end_time,
         check_count: db.sequelize.literal("`check_count`+1"),
-        // check_count: db.sequelize.fn('1 + abs',db.sequelize.col('courses.check_count')),
     }, {
             where: { course_id: course_id }
         }).then(res => res == 1 ? true : false).catch(err => { LogUtil.error(err); return false; })
@@ -239,15 +233,6 @@ var isChecked = async (uid, course_id) => {
         LogUtil.error(err);
         return undefined;
     })
-}
-
-/**
- * 删除文件
- * @param {*} url 
- */
-var deleteFile = (url) => {
-    fs.unlink(url, (err) =>
-        err ? LogUtil.error(err) : LogUtil.error('delete old file success'));
 }
 
 /**

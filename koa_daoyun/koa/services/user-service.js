@@ -135,105 +135,6 @@ module.exports = {
         })
         return returnModel
     },
-    getUserFaceInfo: async (token) => {
-        let returnModel = getReturnModel()
-        let user = await getUser(Util.getUidFromToken(token))
-        if (user.face_info) {
-            returnModel.result_code = '200'
-            returnModel.result_desc = '人脸信息存在'
-        } else {
-            returnModel.result_code = "206"
-            returnModel.result_desc = "人脸信息不存在"
-        }
-        return returnModel
-    },
-    uploadAvatar: async (token, uid, files) => {
-        let returnModel = getReturnModel();
-        let file_path, file_name
-        if (files) {
-            for (let f in files) {
-                file_path = files[f].path
-                file_name = files[f].name
-            }
-        } else {
-            returnModel.result_code = '0'
-            returnModel.result_desc = "头像文件上传失败"
-            ctx.rest(returnModel)
-            return;
-        }
-        let finalPath = file_path + '.' + file_name.split('.')[1];
-        let tag = true;
-        try {
-            fs.renameSync(file_path, finalPath)
-        } catch (err) {
-            LogUtil.error(err);
-            tag = false
-        }
-        if (tag) {
-            let origin_url = (await getUserImageUrl(uid)).avatar || null
-            let url = (HOST_IP + '/static' + finalPath.split('static')[1]).replace(/\\/g, '/');
-            if (await User.update(
-                { avatar: url },
-                { where: { uid: uid } })
-                .then(res => res == 1 ? true : false)
-                .catch(err => { LogUtil.error(err); return false; })) {
-                if (origin_url) fs.unlink(__dirname.replace('services', '') + origin_url.replace(HOST_IP, ''), (err) => err ? LogUtil.error(err) : LogUtil.info('delete old file success'));
-                returnModel.data = { avatar: url }
-                returnModel.result_code = '200'
-                returnModel.result_desc = "头像上传成功"
-            } else {
-                returnModel.result_code = '206'
-                returnModel.result_desc = "头像上传失败"
-            }
-        } else {
-            returnModel.result_code = '0'
-            returnModel.result_desc = "头像上传失败"
-        }
-        return returnModel
-    },
-    uploadFaceInfo: async (uid, files) => {
-        let returnModel = getReturnModel()
-        let file_path, file_name
-        if (files) {
-            for (let f in files) {
-                file_path = files[f].path
-                file_name = files[f].name
-            }
-        } else {
-            returnModel.result_code = '0'
-            returnModel.result_desc = "人脸信息上传成功"
-            ctx.rest(returnModel)
-            return;
-        }
-        let finalPath = (file_path + '.' + file_name.split('.')[1]).replace('upload', 'faceinfo');
-        let tag = true;
-        try {
-            fs.renameSync(file_path, finalPath)
-        } catch (err) {
-            LogUtil.error(err);
-            tag = false
-        }
-        if (tag) {
-            let url = (HOST_IP + '/static' + finalPath.split('static')[1]).replace(/\\/g, '/');
-            let origin_url = (await getUserImageUrl(uid)).face_info || null
-            if (await User.update(
-                { face_info: url },
-                { where: { uid: uid } })
-                .then(res => res == 1 ? true : false)
-                .catch(err => { LogUtil.error(err); return false; })) {
-                if (origin_url) fs.unlink(__dirname.replace('services', '') + origin_url.replace(HOST_IP, ''), (err) => err ? LogUtil.error(err) : LogUtil.error('delete old file success'));
-                returnModel.result_code = '200'
-                returnModel.result_desc = "请求成功"
-            } else {
-                returnModel.result_code = '206'
-                returnModel.result_desc = "人脸信息上传失败"
-            }
-        } else {
-            returnModel.result_code = '0'
-            returnModel.result_desc = "人脸信息上传失败"
-        }
-        return returnModel
-    },
     sendEmailCode2User: async (email) => {
         let returnModel = getReturnModel()
         await sendEmailCode(email).then(res => {
@@ -389,16 +290,6 @@ var updateUserInfo = async (uid, user) => {
         throw e;
     })
 }
-
-/**
- * 获取用户头像和人脸信息的url
- * @param {*} uid 
- */
-var getUserImageUrl = async (uid) => await User.findOne({
-    attributes: ['face_info', 'avatar'],
-    where: { uid: uid },
-    raw: true
-}).then(res => res ? res : null).catch(err => { LogUtil.error(err); return null; })
 
 /**
  * 生成随机数

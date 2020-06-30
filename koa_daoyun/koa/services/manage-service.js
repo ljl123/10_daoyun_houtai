@@ -1,8 +1,4 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const fs = require('fs');
 const db = require('../db')
-const FaceMatch = require('../face-match')
 const Util = require('../utils/utils')
 const LogUtil = require('../log/log-util')
 
@@ -12,10 +8,6 @@ const Students = require('../models/StudentsModel')
 const SigninList = require('../models/Sign-inListModel')
 const Manager = require('../models/ManagerModel')
 const UserService = require('../services/user-service')
-
-const config = require('../config/config-override')
-const HOST_IP = config.remote ? config.imghost : config.imghost_default
-
 
 let now = Date.now()
 

@@ -3,15 +3,15 @@
 
  Source Server         : mysql
  Source Server Type    : MySQL
- Source Server Version : 50643
- Source Host           : 167.179.75.22:3306
+ Source Server Version : 50463
+ Source Host           : 121.89.192.99:3306
  Source Schema         : checkserver
 
  Target Server Type    : MySQL
- Target Server Version : 50643
- File Encoding         : 65001
+ Target Server Version : 50463
+ File Encoding         : 65950
 
- Date: 05/06/2020 14:08:42
+ Date: 06/30/2020 18:33:11
 */
 
 SET NAMES utf8mb4;
@@ -157,8 +157,6 @@ CREATE TABLE `users`  (
   `school` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '学校',
   `department` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '学院',
   `profession` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '专业',
-  `face_info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '人脸信息',
-  `avatar` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '头像',
   `last_login_time` bigint(15) NOT NULL COMMENT '上次登录时间',
   `reg_time` bigint(15) NOT NULL COMMENT '注册时间',
   PRIMARY KEY (`uid`) USING BTREE,

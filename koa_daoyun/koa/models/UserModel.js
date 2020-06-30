@@ -13,8 +13,6 @@ module.exports = db.sequelize.define('users', {
     school: { type: db.type.STRING(255), allowNull: false, defaultValue: '', comment: '学校' },
     department: { type: db.type.STRING(255), allowNull: false, defaultValue: '', comment: '学院' },
     profession: { type: db.type.STRING(255), allowNull: false, defaultValue: '', comment: '专业' },
-    face_info: { type: db.type.STRING(255), allowNull: false, defaultValue: '', comment: '人脸信息' },
-    avatar: { type: db.type.STRING(255), allowNull: false, defaultValue: '', comment: '头像' },
     last_login_time: { type: db.type.BIGINT(15), allowNull: false, defaultValue: 0, comment: '上次登录时间' },
     reg_time: { type: db.type.BIGINT(15), allowNull: false, defaultValue: 0, comment: '注册时间' }
 }, {

@@ -1,23 +1,12 @@
-const jwt = require('jsonwebtoken');
-const crypto = require('crypto');
-const fs = require('fs');
-const db = require('../db')
-const FaceMatch = require('../face-match')
 const Util = require('../utils/utils')
 const LogUtil = require('../log/log-util')
 
-const User = require('../models/UserModel')
-const Course = require('../models/CourseModel')
-const Students = require('../models/StudentsModel')
-const SigninList = require('../models/Sign-inListModel')
 const ManageService = require('../services/manage-service')
 const UserController = require('../controllers/user')
 const CourseController = require('../controllers/course')
 const CheckController = require('../controllers/check')
 const UserService = require('../services/user-service')
 
-const config = require('../config/config-override')
-const HOST_IP = config.remote ? config.imghost : config.imghost_default
 
 
 const Defalt_Page_Size = 10
