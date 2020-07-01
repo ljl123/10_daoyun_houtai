@@ -34,21 +34,6 @@ module.exports = {
         delete user.uid
         ctx.rest(await UserService.modifyUserInfo(uid,user))
     },
-    'GET /api/user/face': async (ctx, next) => {
-        let token = ctx.request.query.token || null
-        ctx.rest(await UserService.getUserFaceInfo(token))
-    },
-    'POST /api/user/avatar': async (ctx, next) => {
-        let token = ctx.request.body.fields.token || null
-        let uid = ctx.request.body.fields.uid || null
-        let files = ctx.request.body.files || null
-        ctx.rest(await UserService.uploadAvatar(token,uid,files))
-    },
-    'POST /api/user/face': async (ctx, next) => {
-        let uid = ctx.request.body.fields.uid || null
-        let files = ctx.request.body.files || null
-        ctx.rest(await UserService.uploadFaceInfo(uid,files))
-    },
     'POST /api/user/email_code': async (ctx, next) => {
         let email = ctx.request.body.fields.email || null
         ctx.rest(await UserService.sendEmailCode2User(email))

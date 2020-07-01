@@ -17,6 +17,26 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+
+DROP TABLE IF EXISTS `menu_authority`;
+/*==============================================================*/
+/* Table: menu_authority                                        */
+/*==============================================================*/
+CREATE TABLE `menu_authority` (
+   id   int(8) NOT NULL AUTO_INCREMENT COMMENT 'id',
+   previous_id   int(8),
+   name  varchar(255) NOT NULL COMMENT '菜单名称',
+   is_show  varchar(255) NOT NULL COMMENT '是否展示',
+   link  varchar(255) NOT NULL COMMENT '路由',
+   sort int(8) NOT NULL COMMENT '排列序号',
+   primary key (id)
+);
+
+alter table menu_authority add constraint FK_previous_id foreign key (previous_id)
+      references menu_authority (id) on delete restrict on update restrict;
+/* 预先插入一条信息顶层菜单信息                                     */
+INSERT INTO `menu_authority` VALUES (1, 0, '顶层菜单', '是', '/', 1);
+
 -- ----------------------------
 -- Table structure for checks
 -- ----------------------------
