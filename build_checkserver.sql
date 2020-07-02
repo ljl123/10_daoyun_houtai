@@ -35,7 +35,7 @@ CREATE TABLE `menu_authority` (
 alter table menu_authority add constraint FK_previous_id foreign key (previous_id)
       references menu_authority (id) on delete restrict on update restrict;
 /* 预先插入一条信息顶层菜单信息                                     */
-INSERT INTO `menu_authority` VALUES (1, 0, '顶层菜单', '是', '/', 1);
+INSERT INTO `menu_authority` VALUES (1, 1, 'Top', 'Yes', '/', 1);
 
 -- ----------------------------
 -- Table structure for checks
