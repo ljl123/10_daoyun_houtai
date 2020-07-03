@@ -12,7 +12,7 @@ module.exports = {
         let is_manage_create = user.is_manage_create
         if(is_manage_create==='1'){
             is_manage_create=true
-            user.password='101010'
+            user.password='e10adc3949ba59abbe56e057f20f883e'
         }else{
             is_manage_create=false
         }
