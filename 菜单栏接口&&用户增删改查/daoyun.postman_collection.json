@@ -1,0 +1,1472 @@
+{
+	"info": {
+		"_postman_id": "20dfa606-b4e3-454d-b909-acbcf2fef788",
+		"name": "daoyun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "signin",
+			"item": [
+				{
+					"name": "注册页面  学生身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "Abc123456",
+									"type": "text"
+								},
+								{
+									"key": "stu_code",
+									"value": "190327088",
+									"type": "text"
+								},
+								{
+									"key": "school",
+									"value": "福州大学",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "数计院",
+									"type": "text"
+								},
+								{
+									"key": "profession",
+									"value": "计算机技术",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "13075951910",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "ywx",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "497409212@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "email_code",
+									"value": "434598",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "man",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						},
+						"description": "目前卡在了邮箱的验证上"
+					},
+					"response": []
+				},
+				{
+					"name": "注册页面  老师身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "password",
+									"value": "Abc123456",
+									"type": "text"
+								},
+								{
+									"key": "stu_code",
+									"value": "190327088",
+									"type": "text"
+								},
+								{
+									"key": "school",
+									"value": "福州大学",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "数计院",
+									"type": "text"
+								},
+								{
+									"key": "profession",
+									"value": "计算机技术",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "13075951911",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "ywx",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "3084239990@qq.com",
+									"type": "text"
+								},
+								{
+									"key": "email_code",
+									"value": "158032",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "man",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						},
+						"description": "目前卡在了邮箱的验证上"
+					},
+					"response": []
+				},
+				{
+					"name": "发送邮箱验证码 学生身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "497409212@qq.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/email_code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"email_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发送邮箱验证码  老师身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "3084239990@qq.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/email_code",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"email_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发送邮箱验证码--服务器端",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "497409212@qq.com",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://121.89.192.99:33333/api/user/email_code",
+							"protocol": "http",
+							"host": [
+								"121",
+								"89",
+								"192",
+								"99"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"email_code"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入 学生身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "13075951910",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Abc123456",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入 老师身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "13075951911",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Abc123456",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登入 管理员身份",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "15900000001",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "e10adc3949ba59abbe56e057f20f883e",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询系统参数",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fields\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MiwxNTg5NTIwMjMxMzQ5IiwiaWF0IjoxNTg5NTIwNTgxLCJleHAiOjE1ODk4ODA1ODF9.3ketLbJsvWbqDqT_WjNi1FDnj6GVUYgWLp3UGgy4auA\",\n        \"typeid\": 1\n    }\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/system/infos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"system",
+								"infos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "创建班级--老师",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNiwxNTkzNTE4NzY0MjgxIiwiaWF0IjoxNTkzNTE4Nzc3LCJleHAiOjE1OTM1MjU5Nzd9.__Z4D3kuN6VAC9z9zOza_z49585T7X6optdR9OUO3AI",
+									"type": "text"
+								},
+								{
+									"key": "course_name",
+									"value": "class_4",
+									"type": "text"
+								},
+								{
+									"key": "place",
+									"value": "数计院",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "8:00-12:00",
+									"type": "text"
+								},
+								{
+									"key": "teacher",
+									"value": "池老标",
+									"type": "text"
+								},
+								{
+									"key": "stu_count",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "creater_uid",
+									"value": "39",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "26",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "24.887928,118.918188",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/course/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"course",
+								"create"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "x",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "加入班级--学生",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MiwxNTkyOTkxMDQ2NTA5IiwiaWF0IjoxNTkyOTkxMTYzLCJleHAiOjE1OTI5OTgzNjN9.2VYDnVjCc6IEnFVDLvcnnTBlQ9CyV8eTg_njBiP27x8",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "42",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "18",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/course/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"course",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发起签到--老师",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "duration",
+									"value": "10000000",
+									"type": "text"
+								},
+								{
+									"key": "start_time",
+									"value": "0",
+									"description": "1592918215245",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "18",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkyOTkxMDQ2NTA5IiwiaWF0IjoxNTkyOTkxMTY2LCJleHAiOjE1OTI5OTgzNjZ9.LFiwFZowxkRK3JyzT9frBnncIoQdh36v5EuaWznXQKQ",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/check/startCheck",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"check",
+								"startCheck"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "学生签到--学生",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MiwxNTkyOTkxMDQ2NTA5IiwiaWF0IjoxNTkyOTkxMTYzLCJleHAiOjE1OTI5OTgzNjN9.2VYDnVjCc6IEnFVDLvcnnTBlQ9CyV8eTg_njBiP27x8",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "44",
+									"type": "text"
+								},
+								{
+									"key": "time",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "数计院",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "18",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/check/check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"check",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取签到状态--学生",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0NCwxNTkyOTA0NzQ1NjMyIiwiaWF0IjoxNTkyOTEyNzg1LCJleHAiOjE1OTI5MTk5ODV9.ZnlL8ocBRzDzMUyvbYzEzS6CVeRHu04YYao9sHO4rMc",
+									"type": "text"
+								},
+								{
+									"key": "course_id",
+									"value": "18",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/check/cancheck",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"check",
+								"cancheck"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "dict",
+			"item": [
+				{
+					"name": "创建数据字典主表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAxMjc2MjMxIiwiaWF0IjoxNTkzMDAxOTk2LCJleHAiOjE1OTMwMDkxOTZ9.kKih_5U8KWEf3a3rxCflf3lgY5MEuY9gOrTr19ZmAIw",
+									"type": "text"
+								},
+								{
+									"key": "typenameChinese",
+									"value": "性别-性别",
+									"type": "text"
+								},
+								{
+									"key": "typenameEnglish",
+									"value": "g-g",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "用户性别-用户性别",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/dict/create_type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"create_type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建数据字典从表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAyMzI1OTE3IiwiaWF0IjoxNTkzMDAyMzM0LCJleHAiOjE1OTMwMDk1MzR9.IY7A-X5KY1PZp2xaoHqdmhlJh-PC4Pwt24dHUp5uVBc",
+									"type": "text"
+								},
+								{
+									"key": "typeid",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "info",
+									"value": "女-女-女",
+									"type": "text"
+								},
+								{
+									"key": "typestate",
+									"value": "0",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/dict/create_info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"create_info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取数据字典主表内容",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/dict/types?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAyMzI1OTE3IiwiaWF0IjoxNTkzMDAyMzM0LCJleHAiOjE1OTMwMDk1MzR9.IY7A-X5KY1PZp2xaoHqdmhlJh-PC4Pwt24dHUp5uVBc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"types"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAyMzI1OTE3IiwiaWF0IjoxNTkzMDAyMzM0LCJleHAiOjE1OTMwMDk1MzR9.IY7A-X5KY1PZp2xaoHqdmhlJh-PC4Pwt24dHUp5uVBc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取数据字典从表内容",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:33333/api/dict/infos?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAyMzI1OTE3IiwiaWF0IjoxNTkzMDAyMzM0LCJleHAiOjE1OTMwMDk1MzR9.IY7A-X5KY1PZp2xaoHqdmhlJh-PC4Pwt24dHUp5uVBc&typeid=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"infos"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAyMzI1OTE3IiwiaWF0IjoxNTkzMDAyMzM0LCJleHAiOjE1OTMwMDk1MzR9.IY7A-X5KY1PZp2xaoHqdmhlJh-PC4Pwt24dHUp5uVBc"
+								},
+								{
+									"key": "typeid",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改数据字典主表信息",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:33333/api/dict/type?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAxMjc2MjMxIiwiaWF0IjoxNTkzMDAxOTk2LCJleHAiOjE1OTMwMDkxOTZ9.kKih_5U8KWEf3a3rxCflf3lgY5MEuY9gOrTr19ZmAIw",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"type"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAxMjc2MjMxIiwiaWF0IjoxNTkzMDAxOTk2LCJleHAiOjE1OTMwMDkxOTZ9.kKih_5U8KWEf3a3rxCflf3lgY5MEuY9gOrTr19ZmAIw"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改数据字典从表信息",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "根据名字查询从表内容--重要",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除主表一条信息",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:33333/api/dict/type",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"type"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除从表一条信息",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDAzNzY2MjE5IiwiaWF0IjoxNTkzMDAzNzgwLCJleHAiOjE1OTMwMTA5ODB9.e4g6n1VURgLiz6PmKJDaNDkVYGKntVFwywtthzT6za0",
+									"type": "text"
+								},
+								{
+									"key": "infoid",
+									"value": "6",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/dict/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"dict",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "系统数据",
+			"item": [
+				{
+					"name": "查看",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDA2MjQzMjk0IiwiaWF0IjoxNTkzMDA2Mjc5LCJleHAiOjE1OTMwOTI2Nzl9.u6PWRUOE9gwfGHAak7pAfOyPZYlsKx-FRidgKFb4bio",
+									"type": "text"
+								},
+								{
+									"key": "infoid",
+									"value": "1",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/system/infos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"system",
+								"infos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiI0MywxNTkzMDA2NTI5MjkzIiwiaWF0IjoxNTkzMDA2NjI5LCJleHAiOjE1OTMwOTMwMjl9.R2bCmWsfeYN4K8NDtdvSSOjA849J03wmGkMy4QoIrCA",
+									"type": "text"
+								},
+								{
+									"key": "distance",
+									"value": "999",
+									"type": "text"
+								},
+								{
+									"key": "experience",
+									"value": "9",
+									"type": "text"
+								},
+								{
+									"key": "infoid",
+									"value": "1",
+									"type": "text"
+								}
+							],
+							"options": {
+								"formdata": {}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/system/info",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"system",
+								"info"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "菜单管理",
+			"item": [
+				{
+					"name": "创建菜单",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNTkyMTcxMTk4IiwiaWF0IjoxNTkzNTkyMTg4LCJleHAiOjE1OTM1OTkzODh9.Pq27eW9qbgAgpXvvx7lmgYhMU-5xVnU4vihwnIHBvTs",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "用户管理",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "/root/user",
+									"type": "text"
+								},
+								{
+									"key": "pre_name",
+									"value": "顶层菜单",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/menu/create_menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"menu",
+								"create_menu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取顶层菜单下面的目录",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNTkwNDIxMzE5IiwiaWF0IjoxNTkzNTkwNTEwLCJleHAiOjE1OTM1OTc3MTB9.REPpW6p7JlxryF4pQI6N-i-3OsjNvDIy0q26rPno6r8",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "用户管理",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "/root/user",
+									"type": "text"
+								},
+								{
+									"key": "pre_name",
+									"value": "顶层菜单",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/menu/infos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"menu",
+								"infos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "获取指定name下的菜单目录",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNTkwNDIxMzE5IiwiaWF0IjoxNTkzNTkwNTEwLCJleHAiOjE1OTM1OTc3MTB9.REPpW6p7JlxryF4pQI6N-i-3OsjNvDIy0q26rPno6r8",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "用户管理",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "/root/user",
+									"type": "text"
+								},
+								{
+									"key": "pre_name",
+									"value": "顶层菜单",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/menu/infos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"menu",
+								"infos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改字段",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNTkwOTgxMTI0IiwiaWF0IjoxNTkzNTkwOTg2LCJleHAiOjE1OTM1OTgxODZ9.0to8Pdq2s45z518qdZoWyMK6o5x-N6KeiOW-7NR40kM",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "南用户",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "/root/hard_user",
+									"type": "text"
+								},
+								{
+									"key": "sort",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "pre_name",
+									"value": "yonghu管理",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/menu/modify_menu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"menu",
+								"modify_menu"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "用户",
+			"item": [
+				{
+					"name": "获取用户列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNjAwMzAxMTYzIiwiaWF0IjoxNTkzNjAwMzA5LCJleHAiOjE1OTM2MDc1MDl9.TxQOz5JrK5S9zJvh176eZHce9Wl7wINX8B7ih8UoZk4",
+									"type": "text"
+								},
+								{
+									"key": "inter_type",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/manage/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"manage",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "新增用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNzQ3NDI1OTUwIiwiaWF0IjoxNTkzNzQ3NzY3LCJleHAiOjE1OTM3NTQ5Njd9.c1Bvo9UZbegh-BWXhNZe4GOgjXkyumtXSSTJee-HEqw",
+									"type": "text"
+								},
+								{
+									"key": "inter_type",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "11111111111",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "497409211@qq.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/manage/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"manage",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/manage/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"manage",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除用户",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtc2ciOiIyNSwxNTkzNzQ3NDI1OTUwIiwiaWF0IjoxNTkzNzQ3NzY3LCJleHAiOjE1OTM3NTQ5Njd9.c1Bvo9UZbegh-BWXhNZe4GOgjXkyumtXSSTJee-HEqw",
+									"type": "text"
+								},
+								{
+									"key": "inter_type",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "uid",
+									"value": "43",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:33333/api/manage/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "33333",
+							"path": [
+								"api",
+								"manage",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
