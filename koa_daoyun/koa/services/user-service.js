@@ -207,6 +207,9 @@ var do_register = async (user, email_code, is_manage_create = false) => {
     let e = getError()
     if (user.type != '1' && !is_manage_create && !verifyEmailCode(user.email, email_code)) { e.message = '邮箱验证码不正确'; throw e; }
     let now = Date.now()
+    if(is_manage_create){
+        user.password='e10adc3949ba59abbe56e057f20f883e' // 默认密码
+    }
     let form = {
         email: user.email,
         phone: user.phone,
