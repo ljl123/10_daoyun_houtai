@@ -70,8 +70,8 @@ module.exports = {
         if (filter.profession == undefined) delete filter.profession
         let data = await User.findAll({
             where: filter,
-            limit: parseInt(count),
-            offset: (parseInt(page) - 1) * parseInt(count),
+            //limit: parseInt(count),
+            //offset: (parseInt(page) - 1) * parseInt(count),
             raw: true
         }).then(res => res ? res : null).catch(err => {
             LogUtil.error(err); return null;

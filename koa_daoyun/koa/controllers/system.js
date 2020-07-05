@@ -46,7 +46,7 @@ module.exports = {
         info.distance = ctx.request.body.fields.distance || null
         info.experience = ctx.request.body.fields.experience || null
         let user_type = await getUserPermissionFromToken(token)
-        if (Number(user_type) != 1) {
+        if (Number(user_type) >= 3) {
             returnModel.result_code = '206'
             returnModel.result_desc = '没有权限操作'
             ctx.rest(returnModel)
