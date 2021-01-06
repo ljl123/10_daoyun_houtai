@@ -17,7 +17,7 @@
     "url": ""
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "busboy": "0.2.14",
     "hashmap": "^2.3.0",
     "jsonwebtoken": "8.1.1",
